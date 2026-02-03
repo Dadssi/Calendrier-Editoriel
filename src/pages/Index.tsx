@@ -1,20 +1,23 @@
 import { useEffect } from 'react';
 import { useCalendar } from '@/hooks/useCalendar';
 import { useContentManager } from '@/hooks/useContentManager';
+import { useAuth } from '@/hooks/useAuth';
 import { CalendarHeader } from '@/components/Calendar/CalendarHeader';
 import { CalendarGrid } from '@/components/Calendar/CalendarGrid';
 import { ContentSidebar } from '@/components/Sidebar/ContentSidebar';
+import { LoginPanel } from '@/components/Auth/LoginPanel';
 import { Button } from '@/components/ui/button';
 import { Save } from 'lucide-react';
 
 const Index = () => {
+  const { token, isAuthenticated, isLoading: isAuthLoading, login, logout } = useAuth();
   const {
     contents,
     addContent,
     updateContent,
     deleteContent,
     saveAll,
-  } = useContentManager();
+  } = useContentManager(token);
 
   const {
     currentDate,
@@ -38,6 +41,10 @@ const Index = () => {
     setSelectedDate(null);
   };
 
+  if (!isAuthenticated) {
+    return <LoginPanel isLoading={isAuthLoading} onLogin={login} />;
+  }
+
   return (
     <div className="min-h-screen bg-background flex">
       {/* Main Calendar Area */}
@@ -54,6 +61,11 @@ const Index = () => {
           <Button onClick={saveAll} variant="outline" size="sm">
             <Save className="h-4 w-4 mr-2" />
             Sauvegarder
+          </Button>
+        </div>
+        <div className="flex justify-end mb-4">
+          <Button onClick={logout} variant="ghost" size="sm">
+            Déconnexion
           </Button>
         </div>
 

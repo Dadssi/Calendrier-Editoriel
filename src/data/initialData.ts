@@ -12,7 +12,7 @@ const formatDate = (day: number) => {
 
 export const initialContents: Content[] = [
   {
-    id: '1',
+    id: 1,
     date: formatDate(5),
     title: 'Tutoriel React Hooks',
     description: 'Guide complet sur les hooks React les plus utilisés en 2024',
@@ -24,7 +24,7 @@ export const initialContents: Content[] = [
     status: 'published',
   },
   {
-    id: '2',
+    id: 2,
     date: formatDate(5),
     title: 'Mon setup de dev',
     description: 'Tour de mon espace de travail et mes outils préférés',
@@ -36,7 +36,7 @@ export const initialContents: Content[] = [
     status: 'prepared',
   },
   {
-    id: '3',
+    id: 3,
     date: formatDate(8),
     title: 'Les joies du freelance',
     description: 'Quand le client dit "c\'est juste un petit changement"',
@@ -48,7 +48,7 @@ export const initialContents: Content[] = [
     status: 'todo',
   },
   {
-    id: '4',
+    id: 4,
     date: formatDate(12),
     title: 'Comment fixer ses tarifs',
     description: 'Ma méthode pour calculer mes prix en tant que freelance',
@@ -60,7 +60,7 @@ export const initialContents: Content[] = [
     status: 'prepared',
   },
   {
-    id: '5',
+    id: 5,
     date: formatDate(15),
     title: 'Projet e-commerce',
     description: 'Étude de cas complète de mon dernier projet client',
@@ -72,7 +72,7 @@ export const initialContents: Content[] = [
     status: 'todo',
   },
   {
-    id: '6',
+    id: 6,
     date: formatDate(18),
     title: 'Ma première année',
     description: 'Ce que j\'ai appris en 12 mois de freelance',
@@ -84,7 +84,7 @@ export const initialContents: Content[] = [
     status: 'todo',
   },
   {
-    id: '7',
+    id: 7,
     date: formatDate(20),
     title: 'Vos questions réponses',
     description: 'Session Q&A sur le développement web',
@@ -96,7 +96,7 @@ export const initialContents: Content[] = [
     status: 'todo',
   },
   {
-    id: '8',
+    id: 8,
     date: formatDate(22),
     title: 'Comparatif frameworks CSS',
     description: 'Tailwind vs Bootstrap vs CSS Modules - Lequel choisir ?',
@@ -108,7 +108,7 @@ export const initialContents: Content[] = [
     status: 'prepared',
   },
   {
-    id: '9',
+    id: 9,
     date: formatDate(25),
     title: 'Fail de la semaine',
     description: 'Quand j\'ai déployé en prod un vendredi soir...',
@@ -120,7 +120,7 @@ export const initialContents: Content[] = [
     status: 'todo',
   },
   {
-    id: '10',
+    id: 10,
     date: formatDate(28),
     title: 'Organisation Notion',
     description: 'Comment j\'organise tous mes projets avec Notion',

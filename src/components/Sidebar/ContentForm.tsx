@@ -20,8 +20,8 @@ interface ContentFormProps {
   content?: Content | null;
   selectedDate: string;
   onSave: (content: Omit<Content, 'id'>) => void;
-  onUpdate: (id: string, content: Partial<Content>) => void;
-  onDelete: (id: string) => void;
+  onUpdate: (id: number, content: Partial<Content>) => void;
+  onDelete: (id: number) => void;
   onClose: () => void;
 }
 

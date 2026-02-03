@@ -24,7 +24,7 @@ export type SubGenre = {
 export type Status = 'todo' | 'prepared' | 'published';
 
 export interface Content {
-  id: string;
+  id: number;
   date: string; // Format YYYY-MM-DD
   title: string;
   description: string;

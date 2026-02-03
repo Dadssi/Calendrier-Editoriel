@@ -15,8 +15,8 @@ interface ContentSidebarProps {
   contents: Content[];
   onClose: () => void;
   onAddContent: (content: Omit<Content, 'id'>) => void;
-  onUpdateContent: (id: string, content: Partial<Content>) => void;
-  onDeleteContent: (id: string) => void;
+  onUpdateContent: (id: number, content: Partial<Content>) => void;
+  onDeleteContent: (id: number) => void;
 }
 
 export function ContentSidebar({
