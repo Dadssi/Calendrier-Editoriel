@@ -1,73 +1,126 @@
-# Welcome to your Lovable project
+# Calendrier Éditorial
 
-## Project info
+Un calendrier éditorial moderne pour planifier, organiser et suivre vos contenus jour par jour. L’interface est pensée pour être claire et agréable, avec un focus sur la productivité et la collaboration personnelle.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Aperçu
 
-## How can I edit this code?
+- Planification par jour avec contenus, formats, plateformes et statuts
+- CRUD complet connecté à une API PHP + MySQL
+- Authentification admin simple
+- UI conviviale et structurée (calendrier + sidebar de contenus)
 
-There are several ways of editing your application.
+## Technologies
 
-**Use Lovable**
+**Frontend**
+- React + TypeScript
+- Vite
+- Tailwind CSS
+- shadcn-ui
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+**Backend**
+- PHP (API)
+- MySQL (Docker)
 
-Changes made via Lovable will be committed automatically to this repo.
+## Structure du projet
 
-**Use your preferred IDE**
+```
+Calendrier_Editoriel/
+  backend/
+    public/
+    src/
+    sql/
+    docker-compose.yml
+  src/
+  public/
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Prérequis
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Node.js + npm
+- Docker Desktop
+- MAMP (Apache)
+- PHP (si besoin de debug local)
 
-Follow these steps:
+## Installation (Frontend)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+```bash
 git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+cd Calendrier_Editoriel
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Par défaut, le frontend tourne sur `http://localhost:8081`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Installation (Backend)
 
-**Use GitHub Codespaces**
+### 1) Démarrer MySQL via Docker
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+docker compose -f backend/docker-compose.yml up -d
+```
 
-## What technologies are used for this project?
+### 2) Importer la base de données
 
-This project is built with:
+```bash
+docker exec -i calendrier_editoriel_mysql mysql -u calendrier -pcalendrier calendrier_editoriel < backend/sql/schema.sql
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### 3) Lancer l’API via MAMP
 
-## How can I deploy this project?
+- **Document Root**: `Calendrier_Editoriel/backend/public`
+- **Apache Port**: `8888`
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+Test rapide :
+```bash
+curl -s http://localhost:8888/health
+```
 
-## Can I connect a custom domain to my Lovable project?
+## Authentification (admin)
 
-Yes, you can!
+Le login admin est défini en base dans la table `admins`.
+Pour insérer un admin :
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```bash
+docker exec -i calendrier_editoriel_mysql mysql -u calendrier -pcalendrier calendrier_editoriel \
+  -e "INSERT INTO admins (email, password_hash) VALUES ('email@exemple.com', '<PASSWORD_HASH>');"
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+> Le hash se génère en PHP :
+```bash
+php -r "echo password_hash('MotDePasse', PASSWORD_DEFAULT);"
+```
+
+## Configuration
+
+### CORS (backend)
+Dans `backend/src/config.php`, adaptez :
+
+```php
+'cors' => [
+    'allowed_origin' => 'http://localhost:8081',
+],
+```
+
+### API (frontend)
+Vous pouvez fixer l’URL API via un `.env` à la racine :
+
+```
+VITE_API_BASE_URL=http://localhost:8888
+```
+
+## Usage
+
+- Connectez-vous en tant qu’admin
+- Ajoutez, modifiez et supprimez des contenus
+- Les données sont stockées dans MySQL
+
+## Production (idée de déploiement)
+
+- Frontend : Vercel
+- Backend PHP : Render ou Railway
+- MySQL : service managé (Railway, Aiven, etc.)
+
+## Licence
+
+Projet personnel – usage privé.
