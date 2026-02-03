@@ -49,6 +49,25 @@ const Index = () => {
     <div className="min-h-screen bg-background flex">
       {/* Main Calendar Area */}
       <div className="flex-1 p-6 flex flex-col">
+        <div className="mb-6 flex items-center justify-between gap-4 rounded-xl border border-border bg-card px-4 py-3">
+          <div className="flex items-center gap-4">
+            <div className="h-12 w-12 overflow-hidden rounded-full border border-border">
+              <img
+                src="/profile-dadssi.jpeg"
+                alt="Photo de profil"
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div>
+              <p className="text-sm text-muted-foreground">Freelancer & Créateur de Contenu</p>
+              <h2 className="text-lg font-semibold text-foreground">Dadssi Mohamed Abdelhak</h2>
+            </div>
+          </div>
+          <div className="text-right">
+            <p className="text-sm text-muted-foreground">Bonjour Mohamed,</p>
+            <p className="text-base font-medium text-foreground">qu’est-ce qu’on va créer aujourd’hui ?</p>
+          </div>
+        </div>
         <div className="flex items-center justify-between mb-4">
           <CalendarHeader
             currentDate={currentDate}
