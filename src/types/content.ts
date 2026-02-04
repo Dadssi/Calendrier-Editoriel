@@ -1,6 +1,6 @@
 export type Platform = 'linkedin' | 'facebook' | 'instagram' | 'tiktok' | 'youtube';
 
-export type Format = 'reel' | 'carrousel' | 'image' | 'texte' | 'story';
+export type Format = 'reel' | 'carrousel' | 'post' | 'story' | 'video_longue' | 'live';
 
 export type Genre = 
   | 'educatif'
@@ -116,9 +116,10 @@ export const GENRES_CONFIG: Record<Genre, { label: string; subGenres: { value: s
 export const FORMATS_CONFIG: { value: Format; label: string }[] = [
   { value: 'reel', label: 'Reel' },
   { value: 'carrousel', label: 'Carrousel' },
-  { value: 'image', label: 'Image unique' },
-  { value: 'texte', label: 'Texte seul' },
+  { value: 'post', label: 'Post (texte + image)' },
   { value: 'story', label: 'Story' },
+  { value: 'video_longue', label: 'Vidéo longue (YouTube)' },
+  { value: 'live', label: 'Live' },
 ];
 
 export const PLATFORMS_CONFIG: { value: Platform; label: string }[] = [

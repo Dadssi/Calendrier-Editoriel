@@ -41,7 +41,7 @@ export const initialContents: Content[] = [
     title: 'Les joies du freelance',
     description: 'Quand le client dit "c\'est juste un petit changement"',
     platforms: ['instagram', 'linkedin'],
-    format: 'image',
+    format: 'post',
     genre: 'humour',
     subGenre: 'situations',
     time: '12:00',
